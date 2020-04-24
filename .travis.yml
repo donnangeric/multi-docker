@@ -4,7 +4,7 @@ services:
 
 
 before_install:
-  - docker build -t ds4u/react-test  -f ./client/Dockerfile.dev ./client
+  - docker build -t ds4u/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run ds4u/react-test npm test -- --coverage
