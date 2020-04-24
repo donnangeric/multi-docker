@@ -21,3 +21,16 @@ after_success:
   - docker push "$DOCKER_ID"/multi-nginx
   - docker push "$DOCKER_ID"/multi-server
   - docker push "$DOCKER_ID"/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: elasticbeanstalk-us-east-2-311665574655
+  region: us-east-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_path: docker-multi
+  edge: true # opt in to dpl v2
+  on:
+    branch: master
