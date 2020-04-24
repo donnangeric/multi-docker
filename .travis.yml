@@ -10,10 +10,10 @@ script:
   - docker run -e CI=true ds4u/react-test npm test -- --coverage
 
 after_success:
-  - docker build -f ds4u/multi-client ./client
-  - docker build -f ds4u/multi-nginx ./nginx
-  - docker build -f ds4u/multi-server ./server
-  - docker build -f ds4u/multi-worker ./worker
+  - docker build -t ds4u/multi-client ./client
+  - docker build -t ds4u/multi-nginx ./nginx
+  - docker build -t ds4u/multi-server ./server
+  - docker build -t ds4u/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
